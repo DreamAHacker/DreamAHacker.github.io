@@ -6,15 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/4 | DreamAHacker&#39;s Blog</title>
+  <title>mysqlcluster的配置与部署 | DreamAHacker&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DreamAHacker&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/04/index.html">
+  <meta name="description" content="1.机器 管理节点：192.168.67.170    数据节点：192.168.67.154、192.168.67.151  SQL节点：192.168.67.154、192.168.67.151 总共三台PC机  2.基础理论知识 管理结点：从名字可以看出来，这种结点的作用就是管理其他结点的，这个节点可以查看其他数据节点和SQL节点的连接状态，并可以控制这些的节点重启。  数据节点：这些节点的">
+<meta name="keywords" content="mysql,mysqlcluster">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysqlcluster的配置与部署">
+<meta property="og:url" content="http://yoursite.com/2018/04/15/mysqlcluster的配置与部署/index.html">
 <meta property="og:site_name" content="DreamAHacker&#39;s Blog">
+<meta property="og:description" content="1.机器 管理节点：192.168.67.170    数据节点：192.168.67.154、192.168.67.151  SQL节点：192.168.67.154、192.168.67.151 总共三台PC机  2.基础理论知识 管理结点：从名字可以看出来，这种结点的作用就是管理其他结点的，这个节点可以查看其他数据节点和SQL节点的连接状态，并可以控制这些的节点重启。  数据节点：这些节点的">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/V3Ork6V.png">
+<meta property="og:image" content="https://i.imgur.com/xWF72Rn.png">
+<meta property="og:image" content="https://i.imgur.com/dg9nNvS.png">
+<meta property="og:image" content="https://i.imgur.com/byuL4Y8.png">
+<meta property="og:image" content="https://i.imgur.com/jRV7Rod.png">
+<meta property="og:image" content="https://i.imgur.com/Qdm9ffs.png">
+<meta property="og:image" content="https://i.imgur.com/rBb85lj.png">
+<meta property="og:image" content="https://i.imgur.com/ARAvoTd.jpg">
+<meta property="og:image" content="https://i.imgur.com/aPHpud2.png">
+<meta property="og:image" content="https://i.imgur.com/QYNcg9d.png">
+<meta property="og:image" content="https://i.imgur.com/WQZua8w.png">
+<meta property="og:image" content="https://i.imgur.com/XvH6Qcl.png">
+<meta property="og:updated_time" content="2018-04-15T03:38:27.881Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DreamAHacker&#39;s Blog">
+<meta name="twitter:title" content="mysqlcluster的配置与部署">
+<meta name="twitter:description" content="1.机器 管理节点：192.168.67.170    数据节点：192.168.67.154、192.168.67.151  SQL节点：192.168.67.154、192.168.67.151 总共三台PC机  2.基础理论知识 管理结点：从名字可以看出来，这种结点的作用就是管理其他结点的，这个节点可以查看其他数据节点和SQL节点的连接状态，并可以控制这些的节点重启。  数据节点：这些节点的">
+<meta name="twitter:image" content="https://i.imgur.com/V3Ork6V.png">
   
     <link rel="alternative" href="/atom.xml" title="DreamAHacker&#39;s Blog" type="application/atom+xml">
   
@@ -150,36 +168,120 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mysqlcluster的配置与部署" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/15/mysqlcluster的配置与部署/" class="archive-article-date">
-  	<time datetime="2018-04-15T02:31:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/15/mysqlcluster的配置与部署/">mysqlcluster的配置与部署</a>
+    <h1 class="article-title" itemprop="name">
+      mysqlcluster的配置与部署
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/15/mysqlcluster的配置与部署/" class="archive-article-date">
+  	<time datetime="2018-04-15T02:31:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-机器"><a href="#1-机器" class="headerlink" title="1.机器"></a><font face="微软雅黑" color="red" size="6">1.机器</font><br><br></h2><ol>
+<li><p>管理节点：192.168.67.170 <br> </p>
+</li>
+<li><p>数据节点：192.168.67.154、192.168.67.151<br></p>
+</li>
+<li><p>SQL节点：192.168.67.154、192.168.67.151<br></p>
+<h2 id="总共三台PC机"><a href="#总共三台PC机" class="headerlink" title="总共三台PC机"></a>总共三台PC机</h2></li>
+</ol>
+<h2 id="2-基础理论知识"><a href="#2-基础理论知识" class="headerlink" title="2.基础理论知识"></a><font face="微软雅黑" color="red" size="6">2.基础理论知识</font><br><br></h2><ol>
+<li>管理结点：从名字可以看出来，这种结点的作用就是管理其他结点的，这个节点可以查看其他数据节点和SQL节点的连接状态，并可以控制这些的节点重启。 <br></li>
+<li>数据节点：这些节点的作用就是存放数据，每个数据节点都有这个mysql集群的全部数据（数据冗余），也就是只要存在一个能运行就可以了。</li>
+<li>SQL节点：这些节点向外提供SQL接口，所有数据库操作都发往这里，也是只要存在一个能运行就可以。</li>
+</ol>
+<h2 id="3-实际操作过程"><a href="#3-实际操作过程" class="headerlink" title="3.实际操作过程"></a><font face="微软雅黑" color="red" size="6">3.实际操作过程</font><br><br></h2><h1 id="3-1-下载mysqlcluster"><a href="#3-1-下载mysqlcluster" class="headerlink" title="3.1  下载mysqlcluster"></a>3.1  下载mysqlcluster</h1><p>MySql Cluster的下载地址：<a href="http://www.mysql.com/downloads/cluster/" target="_blank" rel="noopener">http://www.mysql.com/downloads/cluster/</a>   我这里3台PC机都是64位的，因此下载了一个64位的mysqlcluster。备注：注意区分64位与32位的区别。最好是64位的操作系统对应64位的软件，32位的操作系统对应32位的软件。</p>
+<p><a href="http://www.mysql.com/downloads/cluster/" target="_blank" rel="noopener">下载地址</a></p>
+<h1 id="3-2-安装软件"><a href="#3-2-安装软件" class="headerlink" title="3.2 安装软件"></a>3.2 安装软件</h1><p> 1.管理节点的配置</p>
+<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2><p>解压mysql-cluster-gpl-7.2.9-win64.zip包<br>Management node的安装配置。<br>Management node一定要安装在C盘下，并且是以下的目录（这是在运行此节点时报错，说找不到相对应的目录）。在IP为192.168.67.170的机子上<br>生成c:/mysql/bin、C:/mysql/mysql-cluster(第一次启动后在这个文件夹会生成类似ndb_1_config.bin.1的文件，好像是为了以后启动加载的配置)<br>和c:/mysql/bin/cluster-logs目录，在下载解压的文件目录mysql/bin中将ndb_mgmd.exe和ndb_mgm.exe复制到192.168.67.170的c:/mysql/bin目录下。</p>
+<ul>
+<li>my.ini的内容为：<br><img src="https://i.imgur.com/V3Ork6V.png" alt="">    </li>
+<li>config.ini的内容（注：ID不能从0开始，必须大于0）：<br><img src="https://i.imgur.com/xWF72Rn.png" alt=""></li>
+</ul>
+<p>2.数据节点的配置</p>
+<ul>
+<li>1.在IP为192.168.67.154 的机子上生成D:/Program Files/mysqlcluster/datanode/mysql/bin、D:/Program Files/mysqlcluster/datanode/mysql/cluster-data、<br>D:/Program Files/mysqlcluster/datanode/mysql/bin/cluster-data.在下载的的解压文件夹/bin中将ndbd.exe复制到<br>172.16.0.161 机子的D:/Program Files/mysqlcluster/datanode/mysql /bin目录下，<br>并在D:/Program Files/mysqlcluster/datanode/mysql/bin目录下生成my.ini文件，文件的内容为：<br><img src="https://i.imgur.com/dg9nNvS.png" alt=""></li>
+<li>2.在IP为192.168.67.151 的机子上生成D:/Program Files/mysqlcluster/datanode/mysql/bin、D:/Program Files/mysqlcluster/datanode/mysql/cluster-data、<br>D:/Program Files/mysqlcluster/datanode/mysql/bin/cluster-data.在下载的的解压文件夹/bin中将ndbd.exe复制到<br>172.16.0.161 机子的D:/Program Files/mysqlcluster/datanode/mysql /bin目录下，<br>并在D:/Program Files/mysqlcluster/datanode/mysql/bin目录下生成my.ini文件，文件的内容为：<br><img src="https://i.imgur.com/byuL4Y8.png" alt=""></li>
+</ul>
+<p>3.SQL节点的配置</p>
+<ul>
+<li>1.在IP为192.168.67.151的机子上生成D:/Program Files/mysqlcluster/sqlnode目录，将下载的解压文件夹直接整个复制到D:/ProgramFiles/mysqlcluster/sqlnode/mysql目录下，在D:/ProgramFiles/mysqlcluster/sqlnode/mysql下生成my.ini文件，文件内容为：<br><img src="https://i.imgur.com/jRV7Rod.png" alt=""></li>
+<li>2.在IP为192.168.67.154的机子上生成D:/Program Files/mysqlcluster/sqlnode目录，将下载的解压文件夹直接整个复制到D:/ProgramFiles/mysqlcluster/sqlnode/mysql目录下，在D:/ProgramFiles/mysqlcluster/sqlnode/mysql下生成my.ini文件，文件内容为：<br><img src="https://i.imgur.com/Qdm9ffs.png" alt=""></li>
+</ul>
+<h1 id="3-3-部署节点"><a href="#3-3-部署节点" class="headerlink" title="3.3 部署节点"></a>3.3 部署节点</h1><p>   测试的过程是有顺序的，一定是：先打开192.168.67.170的管理节点，其次是192.168.67.154与192.168.67.151的数据节点，最后是192.168.67.154与192.168.67.151的SQL节点。一般在配置完毕以后 可以单个节点打开 看是否会有错误，确认无误后，即可开始依次打开节点，进行测试或启动集群。</p>
+<p>1.打开mysql服务</p>
+<p>在192.168.67.154与192.168.67.151两台PC机上打开mysql服务。<br>首先进入cmd界面，然后键入 cd  C:\mysqlcluster\sqlnode\mysql\bin回车；再次输入命令：mysqld  –initialize-insecure回车；再次输入命令：mysqld  –install；这里便已经成功安装了mysql服务，最后利用 net start mysql打开mysql的服务。（这里的前提是没安装mysql并且没有打开mysql服务）</p>
+<p>2.打开管理节点<br><img src="https://i.imgur.com/rBb85lj.png" alt=""></p>
+<h2 id="如上图-则是打开成功，会阻塞住。"><a href="#如上图-则是打开成功，会阻塞住。" class="headerlink" title="如上图 则是打开成功，会阻塞住。"></a>如上图 则是打开成功，会阻塞住。<br></h2><p>3.打开管理节点</p>
+<p>到数据节点1（192.168.67.154）打开命令行窗口，切到C:\mysqlcluster\datanode\mysql\bin，输入 ndbd<br>数据节点1：<br><img src="https://i.imgur.com/ARAvoTd.jpg" alt=""><br>同理 去IP为192.168.67.151机器做同样的操作。</p>
+<p>4.打开SQL节点</p>
+<p>到SQL节点1（192.168.67.154）打开命令行窗口，切到C:\mysqlcluster\sqlnode\mysql\bin，输入：</p>
+<blockquote>
+<p>mysqld  –console<br><img src="https://i.imgur.com/aPHpud2.png" alt=""><br>同理去SQL节点2（192.168.67.151）做相同的操作。</p>
+</blockquote>
+<p>5.查看 数据节点和SQL节点的状态</p>
+<p>可通过在Management node节点（管理节点192.168.67.170）的机器下，转到c:/mysql/bin目录 下输入命令：</p>
+<blockquote>
+<p>ndb_mgm</p>
+</blockquote>
+<p>启动ndb_mgm.exe，之后输入命令：</p>
+<blockquote>
+<p>SHOW<br><img src="https://i.imgur.com/QYNcg9d.png" alt=""><br>这是正确的显示，错误的显示 会有id=n （not connected，…）的错误</p>
+</blockquote>
+<h1 id="3-4-测试"><a href="#3-4-测试" class="headerlink" title="3.4 测试"></a>3.4 测试</h1><p>在192.168.67.154的机子上，打开DOS，进入 D:\mysqlCluster\sqlnode\mysql\bin，再键入命令mysql -u root -p，回车后提示你输密码,直接回车(mysqld –initialize-insecure : 自动生成无密码的root用户)<br></p>
+<blockquote>
+<p>create database test_db;//创建库</p>
+<p>use test_db;//使用库</p>
+<p>CREATE TABLE <code>country</code> (<br>  <code>id</code> int(11) NOT NULL AUTO_INCREMENT COMMENT ‘国家id’,<br>  <code>country_code</code> varchar(20) NOT NULL COMMENT ‘国家代码’,<br>  <code>name</code> varchar(20) NOT NULL COMMENT ‘国家名称’,<br>  PRIMARY KEY (<code>id</code>),<br>  UNIQUE KEY <code>id_UNIQUE</code> (<code>id</code>),<br>  UNIQUE KEY <code>country_code_UNIQUE</code> (<code>country_code</code>),<br>  UNIQUE KEY <code>name_UNIQUE</code> (<code>name</code>)<br>) ENGINE=ndbcluster DEFAULT CHARSET=utf8 COMMENT=’国家’;//创建一个表</p>
+<p>insert into country(country_code,name) values(“003”,”EN”);//在这个表里插入数据</p>
+</blockquote>
+<p>然后完成上述操作以后，到另一台 sql节点(192.168.67.151) 查看数据<br>select * from country;</p>
+<p><img src="https://i.imgur.com/WQZua8w.png" alt=""><br><img src="https://i.imgur.com/XvH6Qcl.png" alt=""><br>如图  测试成功。在192.168.67.154中创建的数据库和表在192.168.67.151的SQL节点中也可以看到。<br>至此 mysqlcluster安装部署完毕。</p>
+<h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><ol>
+<li><a href="http://blog.csdn.net/hzw2312/article/details/8880761" target="_blank" rel="noopener">http://blog.csdn.net/hzw2312/article/details/8880761</a></li>
+<li><a href="https://www.2cto.com/database/201608/543060.html" target="_blank" rel="noopener">https://www.2cto.com/database/201608/543060.html</a></li>
+<li><a href="https://www.cnblogs.com/leohe/p/6729014.html" target="_blank" rel="noopener">https://www.cnblogs.com/leohe/p/6729014.html</a></li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -195,46 +297,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/15/mysqlcluster的配置与部署/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/14/第一篇-学习使用github-hexo搭建博客/" class="archive-article-date">
-  	<time datetime="2018-04-14T02:10:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-14</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/14/第一篇-学习使用github-hexo搭建博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第一篇--学习使用github+hexo搭建博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/14/第一篇-学习使用github-hexo搭建博客/">第一篇--学习使用github+hexo搭建博客</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -257,8 +419,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
