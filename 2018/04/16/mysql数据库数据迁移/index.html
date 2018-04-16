@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | DreamAHacker&#39;s Blog</title>
+  <title>mysql数据库数据迁移 | DreamAHacker&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="DreamAHacker&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤一.停止mysql服务: win+R进入cmd中 输入services.msc打开服">
+<meta name="keywords" content="-mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql数据库数据迁移">
+<meta property="og:url" content="http://yoursite.com/2018/04/16/mysql数据库数据迁移/index.html">
 <meta property="og:site_name" content="DreamAHacker&#39;s Blog">
+<meta property="og:description" content="本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤一.停止mysql服务: win+R进入cmd中 输入services.msc打开服">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/pIO53qt.png">
+<meta property="og:image" content="https://i.imgur.com/dqhVb8N.png">
+<meta property="og:image" content="https://i.imgur.com/hlhABGP.png">
+<meta property="og:image" content="https://i.imgur.com/uaqR9YX.png">
+<meta property="og:image" content="https://i.imgur.com/qoiMmqg.png">
+<meta property="og:image" content="https://i.imgur.com/G0Pb3E3.png">
+<meta property="og:updated_time" content="2018-04-16T09:45:00.748Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DreamAHacker&#39;s Blog">
+<meta name="twitter:title" content="mysql数据库数据迁移">
+<meta name="twitter:description" content="本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤一.停止mysql服务: win+R进入cmd中 输入services.msc打开服">
+<meta name="twitter:image" content="https://i.imgur.com/pIO53qt.png">
   
     <link rel="alternative" href="/atom.xml" title="DreamAHacker&#39;s Blog" type="application/atom+xml">
   
@@ -150,36 +162,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mysql数据库数据迁移" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/16/mysql数据库数据迁移/" class="archive-article-date">
-  	<time datetime="2018-04-16T04:25:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/16/mysql数据库数据迁移/">mysql数据库数据迁移</a>
+    <h1 class="article-title" itemprop="name">
+      mysql数据库数据迁移
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/04/16/mysql数据库数据迁移/" class="archive-article-date">
+  	<time datetime="2018-04-16T04:25:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据"><a href="#本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据" class="headerlink" title="本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据"></a>本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据</h1><h1 id="mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤"><a href="#mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤" class="headerlink" title="mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤"></a>mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤</h1><h1 id="一-停止mysql服务"><a href="#一-停止mysql服务" class="headerlink" title="一.停止mysql服务: "></a><font face="微软雅黑" color="red" size="5">一.停止mysql服务:</font> <br></h1><h2 id="win-R进入cmd中-输入services-msc打开服务管理器，找到Mysql5-7（根据你安装的版本），点击进去"><a href="#win-R进入cmd中-输入services-msc打开服务管理器，找到Mysql5-7（根据你安装的版本），点击进去" class="headerlink" title="win+R进入cmd中 输入services.msc打开服务管理器，找到Mysql5.7（根据你安装的版本），点击进去"></a>win+R进入cmd中 输入services.msc打开服务管理器，找到Mysql5.7（根据你安装的版本），点击进去<img src="https://i.imgur.com/pIO53qt.png" alt=""></h2><h1 id="二-更改MySQL配置文件My-ini中的数据库存储主路径"><a href="#二-更改MySQL配置文件My-ini中的数据库存储主路径" class="headerlink" title="二.更改MySQL配置文件My.ini中的数据库存储主路径 : "></a><font face="微软雅黑" color="red" size="5">二.更改MySQL配置文件My.ini中的数据库存储主路径 :</font> <br></h1><h2 id="打开C-ProgramData-MySQL-MySQL-Server-5-7中的my-ini文件，点击记事本顶部的“编辑”，“查找”，在查找内容中输入datadir后并点击“查找下一个”转到“Path-to-the-database-root数据库存储主路径”参数设置，找到datadir-”C-Documents-and-Settings-All-Users-Application-Data-MySQL-MySQL-Server-5-7-Data-“即是默认的数据库存储主路径设置，现将它改到I-mysql数据文件（你希望的）文件夹，正确的设置是datadir-”I-mysql数据文件-“。-（这里可以修改源文件以后另存为桌面，然后删除源文件，把桌面这个my-ini复制进去即可）"><a href="#打开C-ProgramData-MySQL-MySQL-Server-5-7中的my-ini文件，点击记事本顶部的“编辑”，“查找”，在查找内容中输入datadir后并点击“查找下一个”转到“Path-to-the-database-root数据库存储主路径”参数设置，找到datadir-”C-Documents-and-Settings-All-Users-Application-Data-MySQL-MySQL-Server-5-7-Data-“即是默认的数据库存储主路径设置，现将它改到I-mysql数据文件（你希望的）文件夹，正确的设置是datadir-”I-mysql数据文件-“。-（这里可以修改源文件以后另存为桌面，然后删除源文件，把桌面这个my-ini复制进去即可）" class="headerlink" title="打开C:\ProgramData\MySQL\MySQL Server 5.7中的my.ini文件，点击记事本顶部的“编辑”，“查找”，在查找内容中输入datadir后并点击“查找下一个”转到“Path to the database root数据库存储主路径”参数设置，找到datadir=”C:/Documents and Settings/All Users/Application Data/MySQL/MySQL Server 5.7/Data/“即是默认的数据库存储主路径设置，现将它改到I:\mysql数据文件（你希望的）文件夹，正确的设置是datadir=”I:/mysql数据文件/“。 （这里可以修改源文件以后另存为桌面，然后删除源文件，把桌面这个my.ini复制进去即可） "></a>打开C:\ProgramData\MySQL\MySQL Server 5.7中的my.ini文件，点击记事本顶部的“编辑”，“查找”，在查找内容中输入datadir后并点击“查找下一个”转到“Path to the database root数据库存储主路径”参数设置，找到datadir=”C:/Documents and Settings/All Users/Application Data/MySQL/MySQL Server 5.7/Data/“即是默认的数据库存储主路径设置，现将它改到I:\mysql数据文件（你希望的）文件夹，正确的设置是datadir=”I:/mysql数据文件/“。 （这里可以修改源文件以后另存为桌面，然后删除源文件，把桌面这个my.ini复制进去即可） <img src="https://i.imgur.com/dqhVb8N.png" alt=""><img src="https://i.imgur.com/hlhABGP.png" alt=""></h2><h1 id="三-迁移数据"><a href="#三-迁移数据" class="headerlink" title="三.迁移数据: "></a><font face="微软雅黑" color="red" size="5">三.迁移数据:</font> <br></h1><h2 id="将C-ProgramData-MySQL-MySQL-Server-5-7-Data下的所有文件都复制到你的目标文件（你重新设定数据存储的目录下）"><a href="#将C-ProgramData-MySQL-MySQL-Server-5-7-Data下的所有文件都复制到你的目标文件（你重新设定数据存储的目录下）" class="headerlink" title="将C:\ProgramData\MySQL\MySQL Server 5.7\Data下的所有文件都复制到你的目标文件（你重新设定数据存储的目录下） "></a>将C:\ProgramData\MySQL\MySQL Server 5.7\Data下的所有文件都复制到你的目标文件（你重新设定数据存储的目录下） <img src="https://i.imgur.com/uaqR9YX.png" alt=""></h2><h1 id="四-重启数据库"><a href="#四-重启数据库" class="headerlink" title="四.重启数据库 "></a><font face="微软雅黑" color="red" size="5">四.重启数据库</font> <br></h1><h2 id="win-R进入cmd中-输入services-msc打开服务管理器，找到Mysql5-7（根据你安装的版本），点击进去-1"><a href="#win-R进入cmd中-输入services-msc打开服务管理器，找到Mysql5-7（根据你安装的版本），点击进去-1" class="headerlink" title="win+R进入cmd中 输入services.msc打开服务管理器，找到Mysql5.7（根据你安装的版本），点击进去!"></a>win+R进入cmd中 输入services.msc打开服务管理器，找到Mysql5.7（根据你安装的版本），点击进去!<img src="https://i.imgur.com/qoiMmqg.png" alt=""></h2><h1 id="五-查看更改是否成功"><a href="#五-查看更改是否成功" class="headerlink" title="五.查看更改是否成功 "></a><font face="微软雅黑" color="red" size="5">五.查看更改是否成功</font> <br></h1><h2 id="打开mysql命令行，输入"><a href="#打开mysql命令行，输入" class="headerlink" title="打开mysql命令行，输入"></a>打开mysql命令行，输入</h2><blockquote>
+<p>show global variables like “%datadir%”;</p>
+</blockquote>
+<p><img src="https://i.imgur.com/G0Pb3E3.png" alt=""><br>如图所示 迁移成功，此时建议重新启动电脑，保证数据可以被全部重新读取到。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢您的支持！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,88 +231,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/16/mysql数据库数据迁移/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/15/mysqlcluster的配置与部署/" class="archive-article-date">
-  	<time datetime="2018-04-15T02:31:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/15/mysqlcluster的配置与部署/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysqlcluster的配置与部署</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/15/mysqlcluster的配置与部署/">mysqlcluster的配置与部署</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mysqlcluster</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/14/第一篇-学习使用github-hexo搭建博客/" class="archive-article-date">
-  	<time datetime="2018-04-14T02:10:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/14/第一篇-学习使用github-hexo搭建博客/">第一篇--学习使用github+hexo搭建博客</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -295,8 +353,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
