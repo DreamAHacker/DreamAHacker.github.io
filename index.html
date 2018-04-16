@@ -152,6 +152,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-修复ubuntu-win10双系统中开机直接进入win10的Bug" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/16/修复ubuntu-win10双系统中开机直接进入win10的Bug/">修复ubuntu+win10双系统中开机直接进入win10的Bug</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/16/修复ubuntu-win10双系统中开机直接进入win10的Bug/" class="archive-article-date">
+  	<time datetime="2018-04-16T10:06:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="昨天，我的电脑win10系统出现了故障，我电脑本来是ubuntu-win10双系统的（先装的win10后装的ubuntu），然后对win10系统进行系统重装，没想到遇到Bug了，装完win10以后，开机没有进入系统选项了，他会直接进入win10系统，翻阅了很多资料，其中说的最多的就是利用boot（开机F2，不同电脑可能不一样）或者u盘（ubuntu制作盘进入到ubuntu系统中，在命令行中下载一个叫boot-repair的软件进行-系统引导修复，奈何，我的电脑怎么也下载不了这个软件（目前不知道问题所在），然后我尝试了其他方法，结果给修复了，方法如下："><a href="#昨天，我的电脑win10系统出现了故障，我电脑本来是ubuntu-win10双系统的（先装的win10后装的ubuntu），然后对win10系统进行系统重装，没想到遇到Bug了，装完win10以后，开机没有进入系统选项了，他会直接进入win10系统，翻阅了很多资料，其中说的最多的就是利用boot（开机F2，不同电脑可能不一样）或者u盘（ubuntu制作盘进入到ubuntu系统中，在命令行中下载一个叫boot-repair的软件进行-系统引导修复，奈何，我的电脑怎么也下载不了这个软件（目前不知道问题所在），然后我尝试了其他方法，结果给修复了，方法如下：" class="headerlink" title="昨天，我的电脑win10系统出现了故障，我电脑本来是ubuntu+win10双系统的（先装的win10后装的ubuntu），然后对win10系统进行系统重装，没想到遇到Bug了，装完win10以后，开机没有进入系统选项了，他会直接进入win10系统，翻阅了很多资料，其中说的最多的就是利用boot（开机F2，不同电脑可能不一样）或者u盘（ubuntu制作盘进入到ubuntu系统中，在命令行中下载一个叫boot-repair的软件进行 系统引导修复，奈何，我的电脑怎么也下载不了这个软件（目前不知道问题所在），然后我尝试了其他方法，结果给修复了，方法如下："></a>昨天，我的电脑win10系统出现了故障，我电脑本来是ubuntu+win10双系统的（先装的win10后装的ubuntu），然后对win10系统进行系统重装，没想到遇到Bug了，装完win10以后，开机没有进入系统选项了，他会直接进入win10系统，翻阅了很多资料，其中说的最多的就是利用boot（开机F2，不同电脑可能不一样）或者u盘（ubuntu制作盘进入到ubuntu系统中，在命令行中下载一个叫boot-repair的软件进行 系统引导修复，奈何，我的电脑怎么也下载不了这个软件（目前不知道问题所在），然后我尝试了其他方法，结果给修复了，方法如下：</h1><h2 id="首先利用F2-进入Boot-在boot中启动ubuntu，你也可以用ubuntu制作u盘在boot中进入一个叫-try-什么来着的选项，然后-打开命令行，在其中输入一行代码即可解决"><a href="#首先利用F2-进入Boot-在boot中启动ubuntu，你也可以用ubuntu制作u盘在boot中进入一个叫-try-什么来着的选项，然后-打开命令行，在其中输入一行代码即可解决" class="headerlink" title="首先利用F2 进入Boot 在boot中启动ubuntu，你也可以用ubuntu制作u盘在boot中进入一个叫*try..什么来着的选项，然后 打开命令行，在其中输入一行代码即可解决"></a>首先利用F2 进入Boot 在boot中启动ubuntu，你也可以用ubuntu制作u盘在boot中进入一个叫*try..什么来着的选项，然后 打开命令行，在其中输入一行代码即可解决</h2><blockquote>
+<p>sudo update-grub;</p>
+</blockquote>
+<h2 id="有些电脑可能还需要配置一下，具体方法如下："><a href="#有些电脑可能还需要配置一下，具体方法如下：" class="headerlink" title="有些电脑可能还需要配置一下，具体方法如下："></a>有些电脑可能还需要配置一下，具体方法如下：<br></h2><blockquote>
+<p>sudo gedit /etc/grub.d/40_custom;</p>
+</blockquote>
+<p>在打开的文件中，添加下面的内容，然后保存退出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	menuentry &quot;Win10&quot; &#123;  </span><br><span class="line">	set root=(hd0,1)  </span><br><span class="line">	ntldr /bootmgr  </span><br><span class="line">	boot  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.imgur.com/PFHbk9g.png" alt=""><br>然后在命令行中输入代码：</p>
+<blockquote>
+<p>sudo update-grub<br><img src="https://i.imgur.com/WqYUUt7.png" alt=""><br>此时，即完成了 win10系统引导的修复。在电脑启动的时候就会重修出现那个ubuntu自己设计的系统选择界面。<br>PS：一般条件下，只需要一句：sudo update-grub  即可。<br>这是ubuntu自带的修复和引导系统的命令，很强大。</p>
+</blockquote>
+<h1 id="以上是我在学习之余遇到的一个小小的bug，因为在网上没有找到可行的方法，所以记录下来以备以后遇同样的问题"><a href="#以上是我在学习之余遇到的一个小小的bug，因为在网上没有找到可行的方法，所以记录下来以备以后遇同样的问题" class="headerlink" title="以上是我在学习之余遇到的一个小小的bug，因为在网上没有找到可行的方法，所以记录下来以备以后遇同样的问题 "></a><font face="微软雅黑" color="red" size="5">以上是我在学习之余遇到的一个小小的bug，因为在网上没有找到可行的方法，所以记录下来以备以后遇同样的问题</font> <br></h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Ubuntu</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双系统</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/16/修复ubuntu-win10双系统中开机直接进入win10的Bug/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-mysql数据库数据迁移" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -590,6 +682,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mysqlcluster</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">双系统</a>
               </li>
              
               <li class="article-tag-list-item">

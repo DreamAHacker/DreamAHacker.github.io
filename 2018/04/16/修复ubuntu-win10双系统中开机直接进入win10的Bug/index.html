@@ -6,27 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>mysql数据库数据迁移 | DreamAHacker&#39;s Blog</title>
+  <title>修复ubuntu+win10双系统中开机直接进入win10的Bug | DreamAHacker&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤一.停止mysql服务: win+R进入cmd中 输入services.msc打开服">
-<meta name="keywords" content="-mysql">
+  <meta name="description" content="昨天，我的电脑win10系统出现了故障，我电脑本来是ubuntu+win10双系统的（先装的win10后装的ubuntu），然后对win10系统进行系统重装，没想到遇到Bug了，装完win10以后，开机没有进入系统选项了，他会直接进入win10系统，翻阅了很多资料，其中说的最多的就是利用boot（开机F2，不同电脑可能不一样）或者u盘（ubuntu制作盘进入到ubuntu系统中，在命令行中下载一个">
+<meta name="keywords" content="Linux,Ubuntu,双系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql数据库数据迁移">
-<meta property="og:url" content="http://yoursite.com/2018/04/16/mysql数据库数据迁移/index.html">
+<meta property="og:title" content="修复ubuntu+win10双系统中开机直接进入win10的Bug">
+<meta property="og:url" content="http://yoursite.com/2018/04/16/修复ubuntu-win10双系统中开机直接进入win10的Bug/index.html">
 <meta property="og:site_name" content="DreamAHacker&#39;s Blog">
-<meta property="og:description" content="本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤一.停止mysql服务: win+R进入cmd中 输入services.msc打开服">
+<meta property="og:description" content="昨天，我的电脑win10系统出现了故障，我电脑本来是ubuntu+win10双系统的（先装的win10后装的ubuntu），然后对win10系统进行系统重装，没想到遇到Bug了，装完win10以后，开机没有进入系统选项了，他会直接进入win10系统，翻阅了很多资料，其中说的最多的就是利用boot（开机F2，不同电脑可能不一样）或者u盘（ubuntu制作盘进入到ubuntu系统中，在命令行中下载一个">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/pIO53qt.png">
-<meta property="og:image" content="https://i.imgur.com/dqhVb8N.png">
-<meta property="og:image" content="https://i.imgur.com/hlhABGP.png">
-<meta property="og:image" content="https://i.imgur.com/uaqR9YX.png">
-<meta property="og:image" content="https://i.imgur.com/qoiMmqg.png">
-<meta property="og:image" content="https://i.imgur.com/G0Pb3E3.png">
-<meta property="og:updated_time" content="2018-04-16T09:45:00.748Z">
+<meta property="og:image" content="https://i.imgur.com/PFHbk9g.png">
+<meta property="og:image" content="https://i.imgur.com/WqYUUt7.png">
+<meta property="og:updated_time" content="2018-04-16T10:25:13.105Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql数据库数据迁移">
-<meta name="twitter:description" content="本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤一.停止mysql服务: win+R进入cmd中 输入services.msc打开服">
-<meta name="twitter:image" content="https://i.imgur.com/pIO53qt.png">
+<meta name="twitter:title" content="修复ubuntu+win10双系统中开机直接进入win10的Bug">
+<meta name="twitter:description" content="昨天，我的电脑win10系统出现了故障，我电脑本来是ubuntu+win10双系统的（先装的win10后装的ubuntu），然后对win10系统进行系统重装，没想到遇到Bug了，装完win10以后，开机没有进入系统选项了，他会直接进入win10系统，翻阅了很多资料，其中说的最多的就是利用boot（开机F2，不同电脑可能不一样）或者u盘（ubuntu制作盘进入到ubuntu系统中，在命令行中下载一个">
+<meta name="twitter:image" content="https://i.imgur.com/PFHbk9g.png">
   
     <link rel="alternative" href="/atom.xml" title="DreamAHacker&#39;s Blog" type="application/atom+xml">
   
@@ -162,31 +158,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-mysql数据库数据迁移" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-修复ubuntu-win10双系统中开机直接进入win10的Bug" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      mysql数据库数据迁移
+      修复ubuntu+win10双系统中开机直接进入win10的Bug
     </h1>
   
 
         
-        <a href="/2018/04/16/mysql数据库数据迁移/" class="archive-article-date">
-  	<time datetime="2018-04-16T04:25:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
+        <a href="/2018/04/16/修复ubuntu-win10双系统中开机直接进入win10的Bug/" class="archive-article-date">
+  	<time datetime="2018-04-16T10:06:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据"><a href="#本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据" class="headerlink" title="本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据"></a>本篇博客主要是讲述，如何更改mysql默认数据储存位置与迁移数据</h1><h1 id="mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤"><a href="#mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤" class="headerlink" title="mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤"></a>mysql的安装一般会默认将其安装在C盘（系统盘），数据也会存储在系统盘，这会导致系统盘磁盘容量的吃紧，还会造成电脑卡顿等不好的现象，如果系统出问题很有可能会丢失数据库的数据，因此将数据库的数据迁移到另一个容易管理的磁盘下可能更加合理化，以下是具体步骤</h1><h1 id="一-停止mysql服务"><a href="#一-停止mysql服务" class="headerlink" title="一.停止mysql服务: "></a><font face="微软雅黑" color="red" size="5">一.停止mysql服务:</font> <br></h1><h2 id="win-R进入cmd中-输入services-msc打开服务管理器，找到Mysql5-7（根据你安装的版本），点击进去"><a href="#win-R进入cmd中-输入services-msc打开服务管理器，找到Mysql5-7（根据你安装的版本），点击进去" class="headerlink" title="win+R进入cmd中 输入services.msc打开服务管理器，找到Mysql5.7（根据你安装的版本），点击进去"></a>win+R进入cmd中 输入services.msc打开服务管理器，找到Mysql5.7（根据你安装的版本），点击进去<img src="https://i.imgur.com/pIO53qt.png" alt=""></h2><h1 id="二-更改MySQL配置文件My-ini中的数据库存储主路径"><a href="#二-更改MySQL配置文件My-ini中的数据库存储主路径" class="headerlink" title="二.更改MySQL配置文件My.ini中的数据库存储主路径 : "></a><font face="微软雅黑" color="red" size="5">二.更改MySQL配置文件My.ini中的数据库存储主路径 :</font> <br></h1><h2 id="打开C-ProgramData-MySQL-MySQL-Server-5-7中的my-ini文件，点击记事本顶部的“编辑”，“查找”，在查找内容中输入datadir后并点击“查找下一个”转到“Path-to-the-database-root数据库存储主路径”参数设置，找到datadir-”C-Documents-and-Settings-All-Users-Application-Data-MySQL-MySQL-Server-5-7-Data-“即是默认的数据库存储主路径设置，现将它改到I-mysql数据文件（你希望的）文件夹，正确的设置是datadir-”I-mysql数据文件-“。-（这里可以修改源文件以后另存为桌面，然后删除源文件，把桌面这个my-ini复制进去即可）"><a href="#打开C-ProgramData-MySQL-MySQL-Server-5-7中的my-ini文件，点击记事本顶部的“编辑”，“查找”，在查找内容中输入datadir后并点击“查找下一个”转到“Path-to-the-database-root数据库存储主路径”参数设置，找到datadir-”C-Documents-and-Settings-All-Users-Application-Data-MySQL-MySQL-Server-5-7-Data-“即是默认的数据库存储主路径设置，现将它改到I-mysql数据文件（你希望的）文件夹，正确的设置是datadir-”I-mysql数据文件-“。-（这里可以修改源文件以后另存为桌面，然后删除源文件，把桌面这个my-ini复制进去即可）" class="headerlink" title="打开C:\ProgramData\MySQL\MySQL Server 5.7中的my.ini文件，点击记事本顶部的“编辑”，“查找”，在查找内容中输入datadir后并点击“查找下一个”转到“Path to the database root数据库存储主路径”参数设置，找到datadir=”C:/Documents and Settings/All Users/Application Data/MySQL/MySQL Server 5.7/Data/“即是默认的数据库存储主路径设置，现将它改到I:\mysql数据文件（你希望的）文件夹，正确的设置是datadir=”I:/mysql数据文件/“。 （这里可以修改源文件以后另存为桌面，然后删除源文件，把桌面这个my.ini复制进去即可） "></a>打开C:\ProgramData\MySQL\MySQL Server 5.7中的my.ini文件，点击记事本顶部的“编辑”，“查找”，在查找内容中输入datadir后并点击“查找下一个”转到“Path to the database root数据库存储主路径”参数设置，找到datadir=”C:/Documents and Settings/All Users/Application Data/MySQL/MySQL Server 5.7/Data/“即是默认的数据库存储主路径设置，现将它改到I:\mysql数据文件（你希望的）文件夹，正确的设置是datadir=”I:/mysql数据文件/“。 （这里可以修改源文件以后另存为桌面，然后删除源文件，把桌面这个my.ini复制进去即可） <img src="https://i.imgur.com/dqhVb8N.png" alt=""><img src="https://i.imgur.com/hlhABGP.png" alt=""></h2><h1 id="三-迁移数据"><a href="#三-迁移数据" class="headerlink" title="三.迁移数据: "></a><font face="微软雅黑" color="red" size="5">三.迁移数据:</font> <br></h1><h2 id="将C-ProgramData-MySQL-MySQL-Server-5-7-Data下的所有文件都复制到你的目标文件（你重新设定数据存储的目录下）"><a href="#将C-ProgramData-MySQL-MySQL-Server-5-7-Data下的所有文件都复制到你的目标文件（你重新设定数据存储的目录下）" class="headerlink" title="将C:\ProgramData\MySQL\MySQL Server 5.7\Data下的所有文件都复制到你的目标文件（你重新设定数据存储的目录下） "></a>将C:\ProgramData\MySQL\MySQL Server 5.7\Data下的所有文件都复制到你的目标文件（你重新设定数据存储的目录下） <img src="https://i.imgur.com/uaqR9YX.png" alt=""></h2><h1 id="四-重启数据库"><a href="#四-重启数据库" class="headerlink" title="四.重启数据库 "></a><font face="微软雅黑" color="red" size="5">四.重启数据库</font> <br></h1><h2 id="win-R进入cmd中-输入services-msc打开服务管理器，找到Mysql5-7（根据你安装的版本），点击进去-1"><a href="#win-R进入cmd中-输入services-msc打开服务管理器，找到Mysql5-7（根据你安装的版本），点击进去-1" class="headerlink" title="win+R进入cmd中 输入services.msc打开服务管理器，找到Mysql5.7（根据你安装的版本），点击进去!"></a>win+R进入cmd中 输入services.msc打开服务管理器，找到Mysql5.7（根据你安装的版本），点击进去!<img src="https://i.imgur.com/qoiMmqg.png" alt=""></h2><h1 id="五-查看更改是否成功"><a href="#五-查看更改是否成功" class="headerlink" title="五.查看更改是否成功 "></a><font face="微软雅黑" color="red" size="5">五.查看更改是否成功</font> <br></h1><h2 id="打开mysql命令行，输入"><a href="#打开mysql命令行，输入" class="headerlink" title="打开mysql命令行，输入"></a>打开mysql命令行，输入</h2><blockquote>
-<p>show global variables like “%datadir%”;</p>
+        <h1 id="昨天，我的电脑win10系统出现了故障，我电脑本来是ubuntu-win10双系统的（先装的win10后装的ubuntu），然后对win10系统进行系统重装，没想到遇到Bug了，装完win10以后，开机没有进入系统选项了，他会直接进入win10系统，翻阅了很多资料，其中说的最多的就是利用boot（开机F2，不同电脑可能不一样）或者u盘（ubuntu制作盘进入到ubuntu系统中，在命令行中下载一个叫boot-repair的软件进行-系统引导修复，奈何，我的电脑怎么也下载不了这个软件（目前不知道问题所在），然后我尝试了其他方法，结果给修复了，方法如下："><a href="#昨天，我的电脑win10系统出现了故障，我电脑本来是ubuntu-win10双系统的（先装的win10后装的ubuntu），然后对win10系统进行系统重装，没想到遇到Bug了，装完win10以后，开机没有进入系统选项了，他会直接进入win10系统，翻阅了很多资料，其中说的最多的就是利用boot（开机F2，不同电脑可能不一样）或者u盘（ubuntu制作盘进入到ubuntu系统中，在命令行中下载一个叫boot-repair的软件进行-系统引导修复，奈何，我的电脑怎么也下载不了这个软件（目前不知道问题所在），然后我尝试了其他方法，结果给修复了，方法如下：" class="headerlink" title="昨天，我的电脑win10系统出现了故障，我电脑本来是ubuntu+win10双系统的（先装的win10后装的ubuntu），然后对win10系统进行系统重装，没想到遇到Bug了，装完win10以后，开机没有进入系统选项了，他会直接进入win10系统，翻阅了很多资料，其中说的最多的就是利用boot（开机F2，不同电脑可能不一样）或者u盘（ubuntu制作盘进入到ubuntu系统中，在命令行中下载一个叫boot-repair的软件进行 系统引导修复，奈何，我的电脑怎么也下载不了这个软件（目前不知道问题所在），然后我尝试了其他方法，结果给修复了，方法如下："></a>昨天，我的电脑win10系统出现了故障，我电脑本来是ubuntu+win10双系统的（先装的win10后装的ubuntu），然后对win10系统进行系统重装，没想到遇到Bug了，装完win10以后，开机没有进入系统选项了，他会直接进入win10系统，翻阅了很多资料，其中说的最多的就是利用boot（开机F2，不同电脑可能不一样）或者u盘（ubuntu制作盘进入到ubuntu系统中，在命令行中下载一个叫boot-repair的软件进行 系统引导修复，奈何，我的电脑怎么也下载不了这个软件（目前不知道问题所在），然后我尝试了其他方法，结果给修复了，方法如下：</h1><h2 id="首先利用F2-进入Boot-在boot中启动ubuntu，你也可以用ubuntu制作u盘在boot中进入一个叫-try-什么来着的选项，然后-打开命令行，在其中输入一行代码即可解决"><a href="#首先利用F2-进入Boot-在boot中启动ubuntu，你也可以用ubuntu制作u盘在boot中进入一个叫-try-什么来着的选项，然后-打开命令行，在其中输入一行代码即可解决" class="headerlink" title="首先利用F2 进入Boot 在boot中启动ubuntu，你也可以用ubuntu制作u盘在boot中进入一个叫*try..什么来着的选项，然后 打开命令行，在其中输入一行代码即可解决"></a>首先利用F2 进入Boot 在boot中启动ubuntu，你也可以用ubuntu制作u盘在boot中进入一个叫*try..什么来着的选项，然后 打开命令行，在其中输入一行代码即可解决</h2><blockquote>
+<p>sudo update-grub;</p>
 </blockquote>
-<p><img src="https://i.imgur.com/G0Pb3E3.png" alt=""><br>如图所示 迁移成功，此时建议重新启动电脑，保证数据可以被全部重新读取到。</p>
-
+<h2 id="有些电脑可能还需要配置一下，具体方法如下："><a href="#有些电脑可能还需要配置一下，具体方法如下：" class="headerlink" title="有些电脑可能还需要配置一下，具体方法如下："></a>有些电脑可能还需要配置一下，具体方法如下：<br></h2><blockquote>
+<p>sudo gedit /etc/grub.d/40_custom;</p>
+</blockquote>
+<p>在打开的文件中，添加下面的内容，然后保存退出。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	menuentry &quot;Win10&quot; &#123;  </span><br><span class="line">	set root=(hd0,1)  </span><br><span class="line">	ntldr /bootmgr  </span><br><span class="line">	boot  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.imgur.com/PFHbk9g.png" alt=""><br>然后在命令行中输入代码：</p>
+<blockquote>
+<p>sudo update-grub<br><img src="https://i.imgur.com/WqYUUt7.png" alt=""><br>此时，即完成了 win10系统引导的修复。在电脑启动的时候就会重修出现那个ubuntu自己设计的系统选择界面。<br>PS：一般条件下，只需要一句：sudo update-grub  即可。<br>这是ubuntu自带的修复和引导系统的命令，很强大。</p>
+</blockquote>
+<h1 id="以上是我在学习之余遇到的一个小小的bug，因为在网上没有找到可行的方法，所以记录下来以备以后遇同样的问题"><a href="#以上是我在学习之余遇到的一个小小的bug，因为在网上没有找到可行的方法，所以记录下来以备以后遇同样的问题" class="headerlink" title="以上是我在学习之余遇到的一个小小的bug，因为在网上没有找到可行的方法，所以记录下来以备以后遇同样的问题 "></a><font face="微软雅黑" color="red" size="5">以上是我在学习之余遇到的一个小小的bug，因为在网上没有找到可行的方法，所以记录下来以备以后遇同样的问题</font> <br></h1>
       
 
       
@@ -225,7 +228,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Ubuntu</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双系统</a>
         		</li>
       		
 		</ul>
@@ -281,7 +292,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/16/mysql数据库数据迁移/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/16/修复ubuntu-win10双系统中开机直接进入win10的Bug/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -295,18 +306,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/16/修复ubuntu-win10双系统中开机直接进入win10的Bug/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          修复ubuntu+win10双系统中开机直接进入win10的Bug
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/15/mysqlcluster的配置与部署/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">mysqlcluster的配置与部署</div>
+    <a href="/2018/04/16/mysql数据库数据迁移/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql数据库数据迁移</div>
       <i class="icon-circle-right"></i>
     </a>
   
